@@ -1,0 +1,117 @@
+#background3{
+    background-color: darkgray;
+    background-image: url(../Images/background\ calendar\ 3.jpg);
+}
+.month{
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    padding-bottom: 40px;
+}
+.weeks{
+    font-size: 30px;
+    display:flex;
+    justify-content:center;
+    color: darkmagenta;
+    
+}
+
+.Calendar3{
+    color: darkmagenta;
+}
+.Calendar0{
+    color: darksalmon;
+}
+.day1:hover{
+    background-color: darkcyan;
+}
+.day2:hover{
+    background-color: darkcyan;
+}
+.day3:hover{
+    background-color: darkcyan;
+}
+.day4:hover{
+    background-color: darkcyan;
+}
+.day5:hover{
+    background-color: darkcyan;
+}
+.day6:hover{
+    background-color: darkcyan;
+}
+.day7:hover{
+    background-color: darkcyan;
+}
+.day8:hover{
+    background-color: darkcyan;
+}
+.day9:hover{
+    background-color: darkcyan;
+}
+.day10:hover{
+    background-color: darkcyan;
+}
+.day11:hover{
+    background-color: darkcyan;
+}
+.day12:hover{
+    background-color: darkcyan;
+}
+.day13:hover{
+    background-color: darkcyan;
+}
+.day14:hover{
+    background-color: darkcyan;
+}
+.day15:hover{
+    background-color: darkcyan;
+}
+.day16:hover{
+    background-color: darkcyan;
+}
+.day17:hover{
+    background-color: darkcyan;
+}
+.day18:hover{
+    background-color: darkcyan;
+}
+.day19:hover{
+    background-color: darkcyan;
+}
+.day20:hover{
+    background-color: darkcyan;
+}
+.day21:hover{
+    background-color: darkcyan;
+}
+.day22:hover{
+    background-color: darkcyan;
+}
+.day23:hover{
+    background-color: darkcyan;
+}
+.day24:hover{
+    background-color: darkcyan;
+}
+.day25:hover{
+    background-color: darkcyan;
+}
+.day26:hover{
+    background-color: darkcyan;
+}
+.day27:hover{
+    background-color: darkcyan;
+}
+.day28:hover{
+    background-color: darkcyan;
+}
+.day29:hover{
+    background-color: darkcyan;
+}
+.day30:hover{
+    background-color: darkcyan;
+}
+.day31:hover{
+    background-color: darkcyan;
+}

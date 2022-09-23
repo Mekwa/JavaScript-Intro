@@ -1,0 +1,23 @@
+/* Styling the body*/
+    
+#background-1{
+    background-color: #90a4ae;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+.heading-1{
+    color: black;
+}
+
+p{
+    color: black;
+}
+
+.start-button-1{
+    font-size: 20px;
+}
+.start-button-1:hover{
+    background-color: lightslategray;
+}
+

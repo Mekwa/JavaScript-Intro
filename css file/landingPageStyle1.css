@@ -1,0 +1,23 @@
+#background-color{
+    background-image:url(../Images/Cloud\ 1.jpg)
+}
+
+.log-in-details{
+    margin-top: 20%;
+    margin-left: 35%;
+    font-size: 19px;
+}
+
+.sign-in-details{
+    
+    font-size: 19px;
+    margin-left: 20%;
+}
+
+.log-in-details:hover{
+    background-color: lightslategray;
+}
+.sign-in-details:hover{
+    background-color: lightslategray;
+}
+
