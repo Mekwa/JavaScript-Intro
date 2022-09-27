@@ -1,67 +1,67 @@
-window.addEventListener('load',() =>{
-    const form = document.querySelector("#new-task-form");
-    const input = document.querySelector("#new-task-input");
-    const list_el = document.querySelector("#tasks");
+const taskInput = document.querySelector(".task-input input"),
+filters = document.querySelectorAll(".filters span"),
+clearAll = document.querySelector(".clear-btn"),
+taskBox = document.querySelector(".task-box");
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+let editId,
+isEditTask = false,
+todos = JSON.parse(localStorage.getItem("todo-list"));
 
-        const task = input.value;
+filters.forEach(btn => {
+    btn.addEventListener("click", () => {
+        document.querySelector("span.active").classList.remove("active");
+        btn.classList.add("active");
+        showTodo(btn.id);
+    });
+});
 
-        if (!task){
-            alert("Please fill out the task");
-            return;
-        }
-
-        const task_el = document.createElement("div");
-        task_el.classList.add("task");
-
-        const task_content_el = document.createElement("div");
-        task_content_el.classList.add("content");
-        task_content_el.innerText = task;
-
-        task_el.appendChild(task_content_el);
-
-        const task_input_el = document.createElement("input");
-        task_input_el.classList.add("text");
-        task_input_el.type = "text";
-        task_input_el.value = task;
-        
-
-        task_content_el.appendChild(task_input_el);
-
-        const task_actions_el = document.createElement("div");
-        task_actions_el.classList.add("actions");
-
-        const task_edit_el = document.createElement("button");
-        task_edit_el.classList.add("edit");
-        task_edit_el.innerHTML = "Edit";
-
-        const task_delete_el = document.createElement("button");
-        task_delete_el.classList.add("delete");
-        task_delete_el.innerHTML = "Delete";
-
-        task_actions_el.appendChild(task_edit_el);
-        task_actions_el.appendChild(task_delete_el);
-
-        task_el.appendChild(task_actions_el);
-
-        list_el.appendChild(task_el);
-
-        input.value = "";
-
-        task_edit_el.addEventListener('click', () => {
-            if (task_edit_el.innerText.toLowerCase() == "edit"){
-            task_input_el.removeAttribute("");
-            task_input_el.focus();
-            task_edit_el.innerText = "Save";
-            } else {
-                task_edit_el.innerText = "Edit";
+function showTodo(filter) {
+    let liTag = "";
+    if(todos) {
+        todos.forEach((todo, id) => {
+            let completed = todo.status == "completed" ? "checked" : "";
+            if(filter == todo.status || filter == "all") {
+                liTag += `<li class="task">
+                            <label for="${id}">
+                                <input onclick="updateStatus(this)" type="checkbox" id="${id}" ${completed}>
+                                <p class="${completed}">${todo.name}</p>
+                            </label>
+                            <div class="settings">
+                                <i onclick="showMenu(this)" class="uil uil-ellipsis-h"></i>
+                                <ul class="task-menu">
+                                    <li onclick='editTask(${id}, "${todo.name}")'><i class="uil uil-pen"></i>Edit</li>
+                                    <li onclick='deleteTask(${id}, "${filter}")'><i class="uil uil-trash"></i>Delete</li>
+                                </ul>
+                            </div>
+                        </li>`;
             }
         });
+    }
+    taskBox.innerHTML = liTag || `<span>You don't have any task here</span>`;
+    let checkTask = taskBox.querySelectorAll(".task");
+    !checkTask.length ? clearAll.classList.remove("active") : clearAll.classList.add("active");
+    taskBox.offsetHeight >= 300 ? taskBox.classList.add("overflow") : taskBox.classList.remove("overflow");
+}
+showTodo("all");
 
-        task_delete_el.addEventListener('click', () => {
-            list_el.removeChild(task_el);
-        });
-    })
-})
+function updateStatus(selectedTask) {
+    let taskName = selectedTask.parentElement.lastElementChild;
+    if(selectedTask.checked) {
+        taskName.classList.add("checked");
+        todos[selectedTask.id].status = "completed";
+    } else {
+        taskName.classList.remove("checked");
+        todos[selectedTask.id].status = "pending";
+    }
+    localStorage.setItem("todo-list", JSON.stringify(todos))
+}
+
+
+clearAll.addEventListener("click", () => {
+    isEditTask = false;
+    todos.splice(0, todos.length);
+    localStorage.setItem("todo-list", JSON.stringify(todos));
+    showTodo()
+});
+
+
