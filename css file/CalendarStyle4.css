@@ -2,6 +2,9 @@
     background-color: darkgray;
     background-image: url(../Images/background\ calendar\ 3.jpg);
 }
+
+/* styling of the calendar */
+
 .month{
     text-align: center;
     font-size: 40px;
